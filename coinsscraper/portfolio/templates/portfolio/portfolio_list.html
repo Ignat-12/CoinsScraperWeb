@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+    <h1>Portfolios</h1>
+
+    {% for portfolio in portfolios %}
+        <h2>{{ portfolio.name }}</h2>
+
+        <table border="1">
+            <tr>
+                <th>Asset</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th>Value</th>
+                <th>P/L</th>
+            </tr>
+
+            {% for asset in portfolio.assets.all %}
+                <tr>
+                    <td>{{ asset.name }} ({{ asset.symbol }})</td>
+                    <td>{{ asset.amount }}</td>
+                    <td>{{ asset.current_price }}</td>
+                    <td>{{ asset.holdings_value }}</td>
+                    <td>{{ asset.pl_value }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+</body>
+</html>
